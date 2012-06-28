@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link rel="Stylesheet" href="~/Content/bootstrap.css" />
+        <link rel="Stylesheet" href="~/Content/kendo/2012.1.322/kendo.common.min.css" />
+        <link rel="Stylesheet" href="~/Content/kendo/2012.1.322/kendo.default.min.css" />
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+          }
+        </style>
+        <link rel="Stylesheet" href="~/Content/bootstrap-responsive.css" />
+        <link rel="Stylesheet" href="~/Content/custom.css" />
+        <script type="text/javascript" src="~/Scripts/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+        <script type="text/javascript" src="~/Scripts/kendo/2012.1.322/kendo.web.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/custom/application.js"></script>
+        
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        
+        
+
+        <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">Franchise Manager</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                    <li>@Html.ActionLink("Franchise Sets", "Index", "FranchiseSet")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+              </div><!--/.nav-collapse -->
+
+              <div class="pull-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="container">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+
+
+            <div class="footer container">
+                <div>
+                    <div class="pull-left">
+                        <h4>&copy; @DateTime.Now.Year - SERVPRO Franchise Management</h4>
+                    </div>
+                    @*<div class="pull-right">
+                        <ul id="social">
+                            <li class="span2 pull-left"><a href="http://facebook.com" class="facebook">Facebook</a></li>
+                            <li class="span2"><a href="http://twitter.com" class="twitter">Twitter</a></li>
+                        </ul>
+                    </div>*@
+                </div>  
+            </div>
+
+        </div>
+        
+            
+        
+    </body>
+</html>

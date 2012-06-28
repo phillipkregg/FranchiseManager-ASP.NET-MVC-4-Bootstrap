@@ -1,0 +1,29 @@
+@model FranchiseManagerTest.Models.Franchise
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Franchise</legend>
+
+    <div class="display-label">FranchiseName</div>
+    <div class="display-field">@Model.FranchiseName</div>
+
+    <div class="display-label">FranchiseNumber</div>
+    <div class="display-field">@Model.FranchiseNumber</div>
+
+    <div class="display-label">FranchiseSet</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.FranchiseSet).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

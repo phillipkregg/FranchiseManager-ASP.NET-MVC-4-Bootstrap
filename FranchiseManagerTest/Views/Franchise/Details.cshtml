@@ -1,0 +1,26 @@
+@model FranchiseManagerTest.Models.Franchise
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Franchise</legend>
+
+    <div class="display-label">FranchiseName</div>
+    <div class="display-field">@Model.FranchiseName</div>
+
+    <div class="display-label">FranchiseNumber</div>
+    <div class="display-field">@Model.FranchiseNumber</div>
+
+    <div class="display-label">FranchiseSet</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.FranchiseSet).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FranchiseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

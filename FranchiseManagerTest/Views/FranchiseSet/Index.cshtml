@@ -1,0 +1,216 @@
+@model IEnumerable<FranchiseManagerTest.Models.FranchiseSet>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<div>
+
+	<h2 class="pull-left">Franchise Sets</h2>
+
+	<p class="pull-right">
+        <a class="btn btn-large btn-primary" href="@Url.Action("Create")">
+            <i class='icon-plus icon-white'></i>
+            New Franchise Set
+        </a>		
+	</p>
+
+    
+
+</div>
+
+<br /><br /><br />
+
+
+
+<table id="table_grid">
+	<thead>
+		<tr>
+			
+			<th data-field="franchise_set_name">
+				Franchise Set Name
+			</th>
+			<th data-field="main_address">
+				Main Address
+			</th>
+			<th data-field="time_zone">
+				Time Zone
+			</th>
+			<th data_field="franchises">
+				Franchises
+			</th>
+			<th data-sortable="false">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model) {
+			<tr>
+				
+				<td>
+					@item.FranchiseSetName
+				</td>
+				<td>
+					@item.MainAddress
+				</td>
+				<td>
+					@item.TimeZone
+				</td>
+				<td>
+					@(item.Franchises == null ? "None" : item.Franchises.Count.ToString())
+				</td>
+				<td>
+                    <div class="pull-left">
+                        <a class="btn" href="@Url.Action("Edit", new { id = item.FranchiseSetID })">
+                            <i class='icon-edit'></i>
+                            Edit
+                        </a>					   				
+					    <a id="get_detail" data-id="@Html.Raw(item.FranchiseSetID)" href="#" ></a> @* A hidden link to pass data-id *@
+					    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.FranchiseSetID })">
+                            <i class='icon-trash icon-white'></i>
+                            Delete
+                        </a>                       
+				    </div>
+                </td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+<br /> <br />
+
+
+<div id="ajax_grid">
+
+	
+
+	<div class="set_details_container well">
+		<h2>Please Select a Franchise Set to Edit</h2>
+	</div>
+</div>
+
+
+
+
+<script>
+
+/* File Created: June 20, 2012 */
+
+ $(document).ready(function () {
+		$("#set_grid").kendoGrid({
+			dataSource: {
+				type: "json",
+				transport: {
+					read: "/franchiseset",
+					 update: {
+						url: "/franchiseset" ,
+						dataType: "application/json"
+					},
+				},
+				schema: {
+					model: {
+						fields: {
+							SetID: { type: "integer" },
+							SetName: { type: "string" },
+							MainAddress: { type: "string" },
+							TimeZone: { type: "string" }
+							
+						}
+					}
+				},
+				pageSize: 5,
+			   
+			},
+			//height: 250,
+			filterable: true,
+			sortable: true,
+			pageable: true,
+			columns: [                            
+							{
+								field: "SetID",
+								title: "Franchise Set ID",                               
+								
+							}, 
+							{
+								field: "SetName",
+								title: "Franchise Name"
+							   
+							},
+							{
+								field: "MainAddress",
+								title: "Main Address"
+								
+							},
+							 {
+								field: "TimeZone",
+								title: "Time Zone"
+								
+							},
+							{ 
+								command: ["edit", "destroy"], 
+								title: "&nbsp;", width: "210px" 
+							},
+						],
+						editable: "inline"
+		});
+
+
+
+
+		$("#table_grid").kendoGrid({
+			scrollable: true,
+			sortable: true,
+			pageable: true,
+			//height: 300,
+			dataSource: { pageSize: 5 }
+		
+		});   
+		
+		   
+		$("#table_grid tbody tr").live("click", function(e) {        
+			
+		  
+			$(this).toggleClass("green_row");
+			$(this).siblings().removeClass("green_row");
+			var set_id = $(this).find("#get_detail").attr("data-id");
+			//console.log(set_id);
+			//console.log(e.target);
+
+			set_detail(set_id);    
+		   
+		});
+			
+
+
+	});
+
+	
+	
+
+
+	  var set_detail = function(id) {
+			
+			var set_id = id;
+			//alert(set_id);
+			//console.log(set_id);
+
+			$.ajax({
+				type: "GET",                
+				url: "/franchiseset/Details/" + set_id,                
+				success: function (result) {
+					//alert("success");
+					console.log(result);
+					 $("#ajax_grid").html(result);
+				},
+				error: function (error) {
+					//alert("fail");
+				}
+			
+			})
+			
+		   
+		}
+
+
+
+</script>

@@ -1,0 +1,28 @@
+@model FranchiseManagerTest.Models.FranchiseSet
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FranchiseSetName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FranchiseSetName)
+    @Html.ValidationMessageFor(model => model.FranchiseSetName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MainAddress)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MainAddress)
+    @Html.ValidationMessageFor(model => model.MainAddress)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TimeZone)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TimeZone)
+    @Html.ValidationMessageFor(model => model.TimeZone)
+</div>
+

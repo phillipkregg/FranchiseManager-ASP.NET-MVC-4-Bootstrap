@@ -1,0 +1,84 @@
+﻿/* File Created: June 25, 2012 */
+
+#table_grid tr {
+	cursor: pointer;
+	
+}
+
+.green_row {
+	
+	background: #cdeb8e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+	background: linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */
+
+	
+}
+
+.k-grid > table > tbody > tr:hover,
+.k-grid-content > table > tbody > tr:hover
+{
+		background: #cdeb8e; /* Old browsers */
+		background: -moz-linear-gradient(top,  #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+		background: linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */
+
+}
+
+h1, h2, h3 
+{
+    color: #666;
+}
+
+h4
+{
+    font-family: ariel Sans-Serif;
+	color: #ccc;
+ 
+}
+
+li 
+{
+	list-style-type: none;
+}
+
+.footer 
+{
+    margin-top: 100px;
+
+}
+
+.facebook 
+{
+	background-image: url("images/facebook-icon.png");    
+	background-repeat: no-repeat;	
+	display:block;
+	height:40px;
+	width:auto;
+	text-indent: -1999px
+}
+
+
+.twitter 
+{
+	background-image: url("images/twitter-icon.png");    
+	background-repeat: no-repeat;	
+	display:block;
+	height:40px;
+	width:auto;
+	text-indent: -1999px
+}
+
+
+.set_details_container 
+{
+    height: 200px;
+}

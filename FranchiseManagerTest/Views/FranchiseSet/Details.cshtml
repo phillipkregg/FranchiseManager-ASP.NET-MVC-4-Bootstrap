@@ -1,0 +1,134 @@
+@model FranchiseManagerTest.Models.FranchiseSet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.FranchiseSetName Details</h2>
+
+<fieldset> 
+
+    <ul class="nav nav-pills">
+      <li class="active"><a href="#details" data-toggle="tab">Franchise Set Details</a></li>
+      <li><a href="#franchises" data-toggle="tab">Franchise List</a></li>
+      <li><a href="#users" data-toggle="tab">Users</a></li>
+      <li><a href="#features" data-toggle="tab">Features</a></li>
+    </ul>
+    
+    <div class="tab-content">
+        
+        <div class="tab-pane active" id="details">
+            <div class="row">
+                <div class="span2 pull-left ">Franchise Set Name:</div>
+                <div>@Model.FranchiseSetName</div>
+            </div>
+
+            <div class="row">
+                <div class="span2 pull-left">Main Address:</div>
+                <div>@Model.MainAddress</div>
+            </div>
+
+            <div class="row">
+                <div class="span2 pull-left">Time Zone</div>
+                <div>@Model.TimeZone</div>
+            </div>
+
+             <div class="row">
+                <div class="span2 pull-left">Franchises</div>
+                <div>@(Model.Franchises == null ? "None" : Model.Franchises.Count.ToString())</div>
+            </div>
+
+
+        </div>
+
+        <div class="tab-pane" id="franchises">
+            
+            <h3 class="pull-left">Franchise List</h3>
+
+            <a class="btn pull-right" data-toggle="modal" href="#myModal" >Launch Modal</a>
+
+            <a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
+                <i class='icon-plus icon-white'></i>
+                New Franchise
+            </a>	
+    
+            <br /><br /><br />
+
+
+            <div class="well">
+        
+                <h3>Franchises</h3>
+
+                <table class="table">
+                    <tr>
+                        <th>Franchise Name</th>
+                        <th>Franchise Number</th>
+                        <th>Actions</th>
+                    </tr>
+                    @foreach (var item in Model.Franchises)
+                    {
+                             
+                
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FranchiseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FranchiseNumber)
+                            </td>
+                            <td>
+                                <a class="btn" href="@Url.Action("Edit", "Franchise", new { id = item.FranchiseSetId })">
+                                    <i class="icon-trash"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseSetId })">
+                                    <i class="icon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="tab-pane" id="users">
+            <h3>To Be Implemented</h3>
+        </div>
+
+        <div class="tab-pane" id="features">
+            <h3>To Be Implemented</h3>
+        </div>
+
+    </div> @*End tab-content div*@
+
+
+
+
+    <div class="modal hide fade in" id="myModal" )>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Modal header</h3>
+      </div>
+      <div class="modal-body">
+        @Html.Action("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID })
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary">Save changes</a>
+      </div>
+    </div>
+
+
+
+</fieldset>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FranchiseSetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+
+
