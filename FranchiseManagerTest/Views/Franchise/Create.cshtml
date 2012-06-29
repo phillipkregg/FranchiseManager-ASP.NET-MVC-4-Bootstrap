@@ -4,23 +4,23 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Franchise</legend>
+    <fieldset>        
 
 		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <br />
+        <div>
+            <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-large btn-primary" >
+                <i class="icon-check icon-white"></i>
+                Create Franchise
+            </button>
+        </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 

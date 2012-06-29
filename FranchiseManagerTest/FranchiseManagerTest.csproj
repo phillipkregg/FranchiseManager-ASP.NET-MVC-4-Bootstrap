@@ -538,15 +538,19 @@
     <Content Include="Content\2012.2.607\Windows7\slider-v.gif" />
     <Content Include="Content\2012.2.607\Windows7\sprite-vertical.png" />
     <Content Include="Content\2012.2.607\Windows7\sprite.png" />
-    <Content Include="Content\custom.css" />
+    <None Include="Content\custom.less" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\facebook-icon.png" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
-    <Content Include="Content\images\twitter-icon.png" />
+    <Content Include="Content\img\facebook-icon.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\gray_pattern_1.png" />
+    <Content Include="Content\img\green_arrow_up.png" />
+    <Content Include="Content\img\orange_sun_burst.jpg" />
+    <Content Include="Content\img\ServPro.png" />
+    <Content Include="Content\img\twitter-icon.png" />
     <Content Include="Content\kendo\2012.1.322\Black\editor.png" />
     <Content Include="Content\kendo\2012.1.322\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2012.1.322\Black\loading-image.gif" />
@@ -590,6 +594,7 @@
     <Content Include="Content\kendo\2012.1.322\Silver\sprite.png" />
     <Content Include="Content\kendo\2012.1.322\textures\glass.png" />
     <Content Include="Content\kendo\2012.1.322\textures\highlight.png" />
+    <Content Include="Scripts\less-1.3.0.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -1101,6 +1106,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\elements.less" />
     <None Include="Content\less\accordion.less" />
     <None Include="Content\less\alerts.less" />
     <None Include="Content\less\bootstrap.less" />
