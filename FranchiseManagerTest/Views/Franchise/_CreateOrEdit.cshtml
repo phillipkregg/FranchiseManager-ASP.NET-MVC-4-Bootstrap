@@ -3,7 +3,7 @@
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
 <div class="editor-label">
-    @Html.LabelFor(model => model.FranchiseName)
+    Franchise Name
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.FranchiseName)
@@ -11,21 +11,21 @@
 </div>
 
 <div class="editor-label">
-    @Html.LabelFor(model => model.FranchiseNumber)
+    Franchise Number
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.FranchiseNumber)
     @Html.ValidationMessageFor(model => model.FranchiseNumber)
 </div>
 
-<div class="editor-label">
+@*<div class="editor-label">
     FranchiseSet
-</div>
+</div>*@
 <div class="editor-field">
     @Html.DropDownListFor(model => model.FranchiseSetId, ((IEnumerable<FranchiseManagerTest.Models.FranchiseSet>)ViewBag.PossibleFranchiseSets).Select(option => new SelectListItem {
         Text = Html.DisplayTextFor(_ => option).ToString(), 
         Value = option.FranchiseSetID.ToString(),
         Selected = (Model != null) && (option.FranchiseSetID == Model.FranchiseSetId)
-    }), "Choose...")
+}), "Choose...", new { style = "display:none;" })
     @Html.ValidationMessageFor(model => model.FranchiseSetId)
 </div>
