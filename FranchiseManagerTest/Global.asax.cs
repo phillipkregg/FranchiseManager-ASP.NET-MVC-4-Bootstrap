@@ -41,7 +41,7 @@ namespace FranchiseManagerTest
         protected void Application_Start()
         {
 
-            Database.SetInitializer<FranchiseManagerContext>(new SetInitializer());
+            Database.SetInitializer<FranchiseManagerContext>(new Devtalk.EF.CodeFirst.DontDropDbJustCreateTablesIfModelChanged<FranchiseManagerContext>());
 
             AreaRegistration.RegisterAllAreas();
 
