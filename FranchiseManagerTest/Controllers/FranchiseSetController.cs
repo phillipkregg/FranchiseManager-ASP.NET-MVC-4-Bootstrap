@@ -9,6 +9,8 @@ namespace FranchiseManagerTest.Controllers
 {   
 	public class FranchiseSetController : Controller
 	{
+        
+
 		private readonly IFranchiseSetRepository franchisesetRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
@@ -25,7 +27,7 @@ namespace FranchiseManagerTest.Controllers
 		// GET: /FranchiseSet/
 
 		public ViewResult Index()
-		{
+		{            
 			return View(franchisesetRepository.AllIncluding(franchiseset => franchiseset.Franchises));
 		}
 
