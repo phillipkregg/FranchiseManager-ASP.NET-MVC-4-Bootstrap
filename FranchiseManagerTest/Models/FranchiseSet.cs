@@ -10,6 +10,7 @@ namespace FranchiseManagerTest.Models
     {        
         [Key]
         public int FranchiseSetID { get; set; }
+
         public string FranchiseSetName { get; set; }
         public string MainAddress { get; set; }
         public string TimeZone { get; set; }       

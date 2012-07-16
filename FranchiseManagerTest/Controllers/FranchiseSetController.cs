@@ -27,7 +27,8 @@ namespace FranchiseManagerTest.Controllers
 		// GET: /FranchiseSet/
 
 		public ViewResult Index()
-		{            
+		{    
+            
 			return View(franchisesetRepository.AllIncluding(franchiseset => franchiseset.Franchises));
 		}
 

@@ -6,7 +6,8 @@
 
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Franchise", FormMethod.Post, new { FranchiseSetId = Model.FranchiseSetId }))
+{
     @Html.ValidationSummary(true)
     <fieldset>        
 

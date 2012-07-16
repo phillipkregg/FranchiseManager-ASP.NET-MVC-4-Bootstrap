@@ -30,7 +30,7 @@ namespace FranchiseManagerTest
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
+                       
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

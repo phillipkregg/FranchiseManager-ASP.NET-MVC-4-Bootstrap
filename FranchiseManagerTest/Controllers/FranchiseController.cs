@@ -58,7 +58,7 @@ namespace FranchiseManagerTest.Controllers
 			if (ModelState.IsValid) {
 				franchiseRepository.InsertOrUpdate(franchise);
 				franchiseRepository.Save();
-				return RedirectToAction("Details", "FranchiseSet");
+                return RedirectToAction("Index", "FranchiseSet", new { id = franchise.FranchiseSetId });
 			} else {
 				ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
 				return View();
