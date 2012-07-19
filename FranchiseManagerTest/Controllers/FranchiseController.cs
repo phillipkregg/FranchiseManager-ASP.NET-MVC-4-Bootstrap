@@ -28,6 +28,7 @@ namespace FranchiseManagerTest.Controllers
 
 		public ViewResult Index()
 		{
+           
 			return View(franchiseRepository.AllIncluding(franchise => franchise.FranchiseSet));
 		}
 

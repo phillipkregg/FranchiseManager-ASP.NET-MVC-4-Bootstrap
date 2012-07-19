@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FranchiseManagerTest.Models;
+using System.Configuration;
 
 namespace FranchiseManagerTest.Controllers
 {   
@@ -27,7 +28,10 @@ namespace FranchiseManagerTest.Controllers
 		// GET: /FranchiseSet/
 
 		public ViewResult Index()
-		{    
+		{
+            
+            var Name = System.Configuration.ConfigurationManager.AppSettings.Get("name");
+            ViewBag.Name = Name;
             
 			return View(franchisesetRepository.AllIncluding(franchiseset => franchiseset.Franchises));
 		}
