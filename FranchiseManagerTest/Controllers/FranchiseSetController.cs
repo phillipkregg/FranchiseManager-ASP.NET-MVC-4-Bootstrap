@@ -8,6 +8,7 @@ using System.Configuration;
 
 namespace FranchiseManagerTest.Controllers
 {   
+    [Authorize(Roles="Administrator")]
 	public class FranchiseSetController : Controller
 	{
         
