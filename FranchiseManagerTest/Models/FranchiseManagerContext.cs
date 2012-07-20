@@ -8,6 +8,10 @@ namespace FranchiseManagerTest.Models
 {
     public class FranchiseManagerContext : DbContext
     {
+        public FranchiseManagerContext() : base("DefaultConnection")
+        {
+
+        }
         public DbSet<FranchiseSet> FranchiseSets { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
 

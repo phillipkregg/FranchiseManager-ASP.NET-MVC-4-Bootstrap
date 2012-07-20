@@ -1140,7 +1140,7 @@
     <None Include="Content\elements.less" />
     <None Include="Content\less\accordion.less" />
     <None Include="Content\less\alerts.less" />
-    <None Include="Content\less\bootstrap.less" />
+    <Content Include="Content\less\bootstrap.less" />
     <None Include="Content\less\breadcrumbs.less" />
     <None Include="Content\less\button-groups.less" />
     <None Include="Content\less\buttons.less" />
