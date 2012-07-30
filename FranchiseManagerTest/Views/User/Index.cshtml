@@ -1,0 +1,47 @@
+@model IEnumerable<FranchiseManagerTest.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            UserName
+        </th>
+        <th>
+            UserNumber
+        </th>
+        <th>
+            FranchiseSet
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+        <td>
+			@item.UserName
+        </td>
+        <td>
+			@item.UserNumber
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.FranchiseSet).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

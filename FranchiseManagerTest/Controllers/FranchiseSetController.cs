@@ -8,10 +8,10 @@ using System.Configuration;
 
 namespace FranchiseManagerTest.Controllers
 {   
-    //[Authorize(Roles="Administrator")]
+	//[Authorize(Roles="Administrator")]
 	public class FranchiseSetController : Controller
 	{
-        
+		
 
 		private readonly IFranchiseSetRepository franchisesetRepository;
 
@@ -30,10 +30,10 @@ namespace FranchiseManagerTest.Controllers
 
 		public ViewResult Index()
 		{
-            
-            var Name = System.Configuration.ConfigurationManager.AppSettings.Get("name");
-            ViewBag.Name = Name;
-            
+			
+			var Name = System.Configuration.ConfigurationManager.AppSettings.Get("name");
+			ViewBag.Name = Name;
+			
 			return View(franchisesetRepository.AllIncluding(franchiseset => franchiseset.Franchises));
 		}
 

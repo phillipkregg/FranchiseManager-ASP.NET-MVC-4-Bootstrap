@@ -69,10 +69,11 @@ namespace FranchiseManagerTest.Controllers
 		//
 		// GET: /Franchise/Edit/5
  
-		public ActionResult Edit(int id)
+		public PartialViewResult Edit(int id)
 		{
 			ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
-			 return View(franchiseRepository.Find(id));
+            var franchise = franchiseRepository.Find(id);
+			 return PartialView(franchise);
 		}
 
 		//

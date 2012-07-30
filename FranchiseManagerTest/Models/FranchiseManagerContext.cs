@@ -14,6 +14,9 @@ namespace FranchiseManagerTest.Models
         }
         public DbSet<FranchiseSet> FranchiseSets { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Feature> Features { get; set; }
+
 
     }
 }

@@ -45,7 +45,7 @@
             
             <h3 class="pull-left">Franchise List</h3>
 
-            <a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#myModal" >
+            <a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#FranchiseModal" >
                 <i class="icon-plus icon-white"></i>
                 Add New Franchise
             </a>
@@ -80,11 +80,11 @@
                                 @Html.DisplayFor(modelItem => item.FranchiseNumber)
                             </td>
                             <td>
-                                <a class="btn" href="@Url.Action("Edit", "Franchise", new { id = item.FranchiseSetId })">
+                                <a class="btn" data-toggle="modal" href="#FranchiseEditModal" >
                                     <i class="icon-edit"></i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseSetId })">
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseID })">
                                     <i class="icon-trash icon-white"></i>
                                     Delete
                                 </a>
@@ -100,7 +100,71 @@
 
 
         <div class="tab-pane" id="users">
-            <h3>To Be Implemented</h3>
+            <h3 class="pull-left">Users</h3>
+
+            <a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#UserModal" >
+                <i class="icon-plus icon-white"></i>
+                Add New User
+            </a>
+
+            @*<a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
+                <i class='icon-plus icon-white'></i>
+                New Franchise
+            </a>	*@
+    
+            <br /><br /><br />
+
+
+            <div class="well">
+        
+                <h3>User List</h3>               
+
+                <table class="table">
+                    <tr>
+                        <th>User Name</th>
+                        <th>User Number</th>
+                        <th>Actions</th>
+                    </tr>
+                    @foreach (var user in Model.Users)
+                    {
+                                          
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => user.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => user.UserNumber)
+                            </td>
+                            <td>
+                                <a class="btn" href="@Url.Action("Edit", "User", new { id = user.UserID })">
+                                    <i class="icon-edit"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "User", new { id = user.UserID })">
+                                    <i class="icon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+
+                @{
+                    if (Model.Users.Count == 0)
+                        { 
+                            <div class="well">
+                                <h3>There are no users.  Would you like to add one?</h3>
+                                <a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#UserModal" >
+                                    <i class="icon-plus icon-white"></i>
+                                    Yes!  I'd like to add a new User to @Model.FranchiseSetName.
+                                </a><br /><br />
+                            </div>
+                        }                
+                    
+                }
+
+            </div>
         </div>
 
         <div class="tab-pane" id="features">
@@ -113,7 +177,7 @@
 
 
 
-    <div class="modal hide fade in" id="myModal" )>
+    <div class="modal hide fade in" id="FranchiseModal" )>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Create New Franchise</h3>
@@ -122,6 +186,34 @@
       {
          <div id="create_franchise_modal_body" class="modal-body">
            @{ Html.RenderAction("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
+         </div>
+         
+      }
+    </div>
+
+    <div class="modal hide fade in" id="FranchiseEditModal" )>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Edit Franchise</h3>
+      </div>
+      @using (Html.BeginForm("Edit", "Franchise", FormMethod.Post))
+      {
+         <div id="create_franchise_modal_body" class="modal-body">
+           @{ Html.RenderAction("Edit", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
+         </div>
+         
+      }
+    </div>
+
+    <div class="modal hide fade in" id="UserModal" )>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Create New User</h3>
+      </div>
+      @using (Html.BeginForm("Create", "User", FormMethod.Post))
+      {
+         <div id="create_franchise_modal_body" class="modal-body">
+           @{ Html.RenderAction("Create", "User", new { FranchiseSetId = Model.FranchiseSetID }); }
          </div>
          
       }

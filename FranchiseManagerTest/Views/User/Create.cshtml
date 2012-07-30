@@ -1,24 +1,26 @@
-@model FranchiseManagerTest.Models.Franchise
+@model FranchiseManagerTest.Models.User
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
+
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        
-        @Html.HiddenFor(model => model.FranchiseID)
-		@Html.Partial("_CreateOrEdit", Model)
+    <fieldset>        
 
-        <br /><br />
-        <div>
+		@Html.Partial("_CreateOrEdit", Model)
+        
+         <div>
             <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
             <button type="submit" class="btn btn-large btn-primary" >
                 <i class="icon-check icon-white"></i>
-                Save Changes
+                Create User
             </button>
         </div>
     </fieldset>
 }
+
+
+
 

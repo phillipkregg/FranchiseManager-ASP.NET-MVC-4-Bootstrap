@@ -15,5 +15,8 @@ namespace FranchiseManagerTest.Models
         public string MainAddress { get; set; }
         public string TimeZone { get; set; }       
         public virtual ICollection<Franchise> Franchises { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Feature> Features { get; set; }
+
     }
 }
