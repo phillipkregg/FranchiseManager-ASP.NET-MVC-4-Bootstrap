@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+
+       
 }
 
 <h2>@Model.FranchiseSetName Details</h2>
@@ -15,6 +17,7 @@
       <li><a href="#features" data-toggle="tab">Features</a></li>
     </ul>
     
+
     <div class="tab-content">
         
         <div class="tab-pane active" id="details">
@@ -68,10 +71,12 @@
                         <th>Franchise Number</th>
                         <th>Actions</th>
                     </tr>
+                    
+                   
+
                     @foreach (var item in Model.Franchises)
                     {
-                             
-                
+                                    
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FranchiseName)
@@ -80,18 +85,45 @@
                                 @Html.DisplayFor(modelItem => item.FranchiseNumber)
                             </td>
                             <td>
-                                <a class="btn" data-toggle="modal" href="#FranchiseEditModal" >
-                                    <i class="icon-edit"></i>
+                                @*<a class="btn" href="@Url.Action("Edit", "Franchise", new { id = item.FranchiseID })">
+                                 <i class="icon-edit"></i>
                                     Edit
+                                </a>*@
+                                <a class="btn edit-franchise-link" data-toggle="modal" href="/Franchise/Edit/@item.FranchiseID" >
+                                    <i class="icon-edit"></i>
+                                    Edit       
                                 </a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseID })">
+
+                                 <a class="btn delete-franchise-link" data-toggle="modal" href="/Franchise/Delete/@item.FranchiseID" >
+                                    <i class="icon-trash"></i>
+                                    Delete       
+                                </a>
+                                
+                                @*<a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseID })">
                                     <i class="icon-trash icon-white"></i>
                                     Delete
-                                </a>
+                                </a>*@
                             </td>
                         </tr>
+                        
+                        
+                        
+                        
                     }
                 </table>
+                @{
+                    if (Model.Franchises.Count == 0)
+                    { 
+                            <div class="well">
+                                <h3>There are no franchises.  Would you like to add one?</h3>
+                                <a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#FranchiseModal" >
+                                    <i class="icon-plus icon-white"></i>
+                                    Yes!  I'd like to add a new Franchise to @Model.FranchiseSetName.
+                                </a><br /><br />
+                            </div>
+                    }                
+                    
+                }
 
             </div>
 
@@ -152,7 +184,7 @@
 
                 @{
                     if (Model.Users.Count == 0)
-                        { 
+                    { 
                             <div class="well">
                                 <h3>There are no users.  Would you like to add one?</h3>
                                 <a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#UserModal" >
@@ -160,7 +192,7 @@
                                     Yes!  I'd like to add a new User to @Model.FranchiseSetName.
                                 </a><br /><br />
                             </div>
-                        }                
+                    }                
                     
                 }
 
@@ -191,19 +223,30 @@
       }
     </div>
 
+
     <div class="modal hide fade in" id="FranchiseEditModal" )>
-      <div class="modal-header">
+        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Edit Franchise</h3>
-      </div>
-      @using (Html.BeginForm("Edit", "Franchise", FormMethod.Post))
-      {
-         <div id="create_franchise_modal_body" class="modal-body">
-           @{ Html.RenderAction("Edit", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
-         </div>
-         
-      }
+        </div>
+        <div id="franchiseEditContent"></div>
     </div>
+
+   
+
+
+    <div class="modal hide fade in" id="FranchiseDeleteModal" )>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Delete Franchise</h3>
+      </div>
+      <div id="franchiseDeleteContent"></div>
+    </div>
+
+    
+
+
+
 
     <div class="modal hide fade in" id="UserModal" )>
       <div class="modal-header">
@@ -212,7 +255,7 @@
       </div>
       @using (Html.BeginForm("Create", "User", FormMethod.Post))
       {
-         <div id="create_franchise_modal_body" class="modal-body">
+         <div class="modal-body">
            @{ Html.RenderAction("Create", "User", new { FranchiseSetId = Model.FranchiseSetID }); }
          </div>
          
@@ -228,3 +271,31 @@
 </p>*@
 
 
+ <script type="text/javascript">
+
+     $(function () {
+         $('.edit-franchise-link').click(function (e) {
+             $('#franchiseEditContent').load($(this).attr('href'), function () {
+                 // show your modal dialog here 
+                 $("#FranchiseEditModal").modal();
+             });
+             e.preventDefault();
+             return false;
+         });
+
+
+
+         $('.delete-franchise-link').click(function (e) {             
+
+             $('#franchiseDeleteContent').load($(this).attr('href'), function () {
+                 // show your modal dialog here 
+                 $("#FranchiseDeleteModal").modal();
+             });
+             e.preventDefault();
+             return false;
+         });
+
+
+     });
+    
+    </script>

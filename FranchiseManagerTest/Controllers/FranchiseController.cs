@@ -36,7 +36,7 @@ namespace FranchiseManagerTest.Controllers
 		// GET: /Franchise/Details/5
 
 		public ViewResult Details(int id)
-		{
+		{            
 			return View(franchiseRepository.Find(id));
 		}
 
@@ -95,9 +95,9 @@ namespace FranchiseManagerTest.Controllers
 		//
 		// GET: /Franchise/Delete/5
  
-		public ActionResult Delete(int id)
-		{
-			return View(franchiseRepository.Find(id));
+		public PartialViewResult Delete(int id)
+		{            
+			return PartialView(franchiseRepository.Find(id));
 		}
 
 		//
