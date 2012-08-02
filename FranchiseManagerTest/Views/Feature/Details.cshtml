@@ -1,0 +1,26 @@
+@model FranchiseManagerTest.Models.Feature
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Feature</legend>
+
+    <div class="display-label">FeatureName</div>
+    <div class="display-field">@Model.FeatureName</div>
+
+    <div class="display-label">IsChecked</div>
+    <div class="display-field">@Model.IsChecked</div>
+
+    <div class="display-label">FranchiseSet</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.FranchiseSet).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FeatureID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

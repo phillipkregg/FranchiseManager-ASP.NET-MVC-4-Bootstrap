@@ -168,13 +168,13 @@
                                 @Html.DisplayFor(modelItem => user.UserNumber)
                             </td>
                             <td>
-                                <a class="btn" href="@Url.Action("Edit", "User", new { id = user.UserID })">
+                                <a class="btn edit-user-link" data-toggle="modal" href="/User/Edit/@user.UserID" >
                                     <i class="icon-edit"></i>
-                                    Edit
+                                    Edit       
                                 </a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", "User", new { id = user.UserID })">
-                                    <i class="icon-trash icon-white"></i>
-                                    Delete
+                                <a class="btn delete-user-link" data-toggle="modal" href="/User/Delete/@user.UserID" >
+                                    <i class="icon-edit"></i>
+                                    Delete       
                                 </a>
                             </td>
                         </tr>
@@ -200,7 +200,40 @@
         </div>
 
         <div class="tab-pane" id="features">
-            <h3>To Be Implemented</h3>
+            
+
+            <div class="well">
+
+            <table class="table">
+                <tr>                    
+                    <th>
+                        Feature Name
+                    </th>
+                    <th>
+                        Activated?
+                    </th>
+                    
+                </tr>
+
+            @foreach (var item in ViewBag.PossibleFeatures) {
+                <tr>                    
+                    <td>
+			            @item.FeatureName
+                    </td>
+                    <td>
+                        
+			            @item.IsChecked
+                    </td>
+                   
+                </tr>
+            }
+
+            </table>
+
+            </div>
+
+
+
         </div>
 
     </div> @*End tab-content div*@
@@ -229,7 +262,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Edit Franchise</h3>
         </div>
-        <div id="franchiseEditContent"></div>
+        <div id="franchiseEditContent" class="modal-body"></div>
     </div>
 
    
@@ -240,7 +273,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Delete Franchise</h3>
       </div>
-      <div id="franchiseDeleteContent"></div>
+      <div id="franchiseDeleteContent" class="modal-body"></div>
     </div>
 
     
@@ -262,6 +295,23 @@
       }
     </div>
 
+
+    <div class="modal hide fade in" id="UserEditModal" )>
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Edit User</h3>
+        </div>
+        <div id="userEditContent" class="modal-body"></div>
+    </div>
+
+
+    <div class="modal hide fade in" id="UserDeleteModal" )>
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Delete User</h3>
+        </div>
+        <div id="userDeleteContent" class="modal-body"></div>
+    </div>
  
 
 </fieldset>
@@ -290,6 +340,28 @@
              $('#franchiseDeleteContent').load($(this).attr('href'), function () {
                  // show your modal dialog here 
                  $("#FranchiseDeleteModal").modal();
+             });
+             e.preventDefault();
+             return false;
+         });
+
+
+         $('.edit-user-link').click(function (e) {
+
+             $('#userEditContent').load($(this).attr('href'), function () {
+                 // show your modal dialog here 
+                 $("#UserEditModal").modal();
+             });
+             e.preventDefault();
+             return false;
+         });
+
+
+         $('.delete-user-link').click(function (e) {
+
+             $('#userDeleteContent').load($(this).attr('href'), function () {
+                 // show your modal dialog here 
+                 $("#UserDeleteModal").modal();
              });
              e.preventDefault();
              return false;

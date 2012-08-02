@@ -12,7 +12,8 @@ namespace FranchiseManagerTest.Models
         [ForeignKey("FranchiseSet")]
         public int FranchiseSetId { get; set; }
         public string FeatureName { get; set; }
-
+        public bool IsChecked { get; set; }
+        
         public virtual FranchiseSet FranchiseSet { get; set; }
     }
 }

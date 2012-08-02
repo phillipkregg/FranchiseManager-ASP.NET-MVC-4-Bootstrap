@@ -4,22 +4,22 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>User</legend>
+    <fieldset>       
 
         @Html.HiddenFor(model => model.UserID)
 		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div>
+            <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-large btn-primary" >
+                <i class="icon-check icon-white"></i>
+                Save Changes
+            </button>
+        </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

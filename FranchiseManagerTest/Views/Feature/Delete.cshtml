@@ -1,0 +1,29 @@
+@model FranchiseManagerTest.Models.Feature
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Feature</legend>
+
+    <div class="display-label">FeatureName</div>
+    <div class="display-field">@Model.FeatureName</div>
+
+    <div class="display-label">IsChecked</div>
+    <div class="display-field">@Model.IsChecked</div>
+
+    <div class="display-label">FranchiseSet</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.FranchiseSet).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

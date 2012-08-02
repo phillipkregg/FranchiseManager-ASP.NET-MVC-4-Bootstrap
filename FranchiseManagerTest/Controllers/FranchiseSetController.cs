@@ -14,15 +14,17 @@ namespace FranchiseManagerTest.Controllers
 		
 
 		private readonly IFranchiseSetRepository franchisesetRepository;
+        private readonly IFeatureRepository featureRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
-		public FranchiseSetController() : this(new FranchiseSetRepository())
+		public FranchiseSetController() : this(new FranchiseSetRepository(), new FeatureRepository())
 		{
 		}
 
-		public FranchiseSetController(IFranchiseSetRepository franchisesetRepository)
+		public FranchiseSetController(IFranchiseSetRepository franchisesetRepository, IFeatureRepository featureRepository)
 		{
 			this.franchisesetRepository = franchisesetRepository;
+            this.featureRepository = featureRepository;
 		}
 
 		//
@@ -42,6 +44,7 @@ namespace FranchiseManagerTest.Controllers
 
 		public ActionResult Details(int id)
 		{
+            ViewBag.PossibleFeatures = featureRepository.All;
 			var model = franchisesetRepository.Find(id);
 			return PartialView(model);
 		}

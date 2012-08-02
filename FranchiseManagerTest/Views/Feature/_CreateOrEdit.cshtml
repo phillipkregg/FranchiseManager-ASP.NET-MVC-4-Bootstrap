@@ -1,31 +1,31 @@
-@model FranchiseManagerTest.Models.User
+@model FranchiseManagerTest.Models.Feature
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
 <div class="editor-label">
-    User Name
+    @Html.LabelFor(model => model.FeatureName)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.UserName)
-    @Html.ValidationMessageFor(model => model.UserName)
+    @Html.EditorFor(model => model.FeatureName)
+    @Html.ValidationMessageFor(model => model.FeatureName)
 </div>
 
 <div class="editor-label">
-    User Number
+    @Html.LabelFor(model => model.IsChecked)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.UserNumber)
-    @Html.ValidationMessageFor(model => model.UserNumber)
+    @Html.EditorFor(model => model.IsChecked)
+    @Html.ValidationMessageFor(model => model.IsChecked)
 </div>
 
-@*<div class="editor-label">
+<div class="editor-label">
     FranchiseSet
-</div>*@
+</div>
 <div class="editor-field">
     @Html.DropDownListFor(model => model.FranchiseSetId, ((IEnumerable<FranchiseManagerTest.Models.FranchiseSet>)ViewBag.PossibleFranchiseSets).Select(option => new SelectListItem {
         Text = Html.DisplayTextFor(_ => option).ToString(), 
         Value = option.FranchiseSetID.ToString(),
         Selected = (Model != null) && (option.FranchiseSetID == Model.FranchiseSetId)
-}), "Choose...", new { style = "display:none;" })
+    }), "Choose...")
     @Html.ValidationMessageFor(model => model.FranchiseSetId)
 </div>

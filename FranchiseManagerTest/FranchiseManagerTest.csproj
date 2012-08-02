@@ -333,11 +333,13 @@
     </Compile>
     <Compile Include="App_Start\DontDropDbJustCreateTablesIfModelChangedStart.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FeatureController.cs" />
     <Compile Include="Controllers\FranchiseController.cs" />
     <Compile Include="Controllers\FranchiseSetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\FeatureRepository.cs" />
     <Compile Include="Models\FranchiseRepository.cs" />
     <Compile Include="Models\FranchiseSetInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -1136,6 +1138,12 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Feature\Create.cshtml" />
+    <Content Include="Views\Feature\Edit.cshtml" />
+    <Content Include="Views\Feature\Delete.cshtml" />
+    <Content Include="Views\Feature\Details.cshtml" />
+    <Content Include="Views\Feature\Index.cshtml" />
+    <Content Include="Views\Feature\_CreateOrEdit.cshtml" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>

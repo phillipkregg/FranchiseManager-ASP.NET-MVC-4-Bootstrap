@@ -1,0 +1,47 @@
+@model IEnumerable<FranchiseManagerTest.Models.Feature>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            FeatureName
+        </th>
+        <th>
+            IsChecked
+        </th>
+        <th>
+            FranchiseSet
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FeatureID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FeatureID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FeatureID })
+        </td>
+        <td>
+			@item.FeatureName
+        </td>
+        <td>
+			@item.IsChecked
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.FranchiseSet).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

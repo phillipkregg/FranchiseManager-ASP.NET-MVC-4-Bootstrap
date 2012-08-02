@@ -58,7 +58,7 @@ namespace FranchiseManagerTest.Controllers
             if (ModelState.IsValid) {
                 userRepository.InsertOrUpdate(user);
                 userRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "FranchiseSet", new { id = user.FranchiseSetId } );
             } else {
 				ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
 				return View();
@@ -68,11 +68,11 @@ namespace FranchiseManagerTest.Controllers
         //
         // GET: /User/Edit/5
  
-        public ActionResult Edit(int id)
+        public PartialViewResult Edit(int id)
         {
 			ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
             var user = userRepository.Find(id);
-             return View(user);
+             return PartialView(user);
         }
 
         //
@@ -84,7 +84,7 @@ namespace FranchiseManagerTest.Controllers
             if (ModelState.IsValid) {
                 userRepository.InsertOrUpdate(user);
                 userRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "FranchiseSet", new { id = user.FranchiseSetId } );
             } else {
 				ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
 				return View();
@@ -94,9 +94,9 @@ namespace FranchiseManagerTest.Controllers
         //
         // GET: /User/Delete/5
  
-        public ActionResult Delete(int id)
+        public PartialViewResult Delete(int id)
         {
-            return View(userRepository.Find(id));
+            return PartialView(userRepository.Find(id));
         }
 
         //
@@ -108,7 +108,7 @@ namespace FranchiseManagerTest.Controllers
             userRepository.Delete(id);
             userRepository.Save();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "FranchiseSet" );
         }
 
         protected override void Dispose(bool disposing)
