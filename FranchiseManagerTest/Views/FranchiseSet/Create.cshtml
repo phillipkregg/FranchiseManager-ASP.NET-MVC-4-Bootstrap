@@ -11,15 +11,18 @@
 	<fieldset>        
 
 		@Html.Partial("_CreateOrEdit", Model)
-
-		<p>
-			<input type="submit" value="Create" />
-		</p>
+		
+		<br /><br />
+		<div>
+			<a href="/FranchiseSet" class="btn btn-large">Cancel</a>
+			<button type="submit" class="btn btn-large btn-primary" >
+				<i class="icon-check icon-white"></i>
+				Create Franchise Set
+			</button>
+		</div>
 	</fieldset>
 }
 
-<div>
-	@Html.ActionLink("Back to List", "Index")
-</div>
+
 
 

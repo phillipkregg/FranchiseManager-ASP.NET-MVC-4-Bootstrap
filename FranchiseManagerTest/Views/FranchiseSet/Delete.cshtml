@@ -4,29 +4,47 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>About to Delete a Franchise Set</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>FranchiseSet</legend>
+<h3>Man, are you sure you want to delete @Model.FranchiseSetName?</h3>
 
-    <div class="display-label">FranchiseSetName</div>
-    <div class="display-field">@Model.FranchiseSetName</div>
 
-    <div class="display-label">MainAddress</div>
-    <div class="display-field">@Model.MainAddress</div>
 
-    <div class="display-label">TimeZone</div>
-    <div class="display-field">@Model.TimeZone</div>
+<div class="well">
+<fieldset>    
+    <h5>Just so you understand, you are about to kill off an entire Franchise Set that contains:</h5>
+    <br />
+    
+    <label class="delete-labels pull-left">Franchise Set Name</label>
+    <label class="delete-labels offset2">@Model.FranchiseSetName</label>
+   
 
-    <div class="display-label">Franchises</div>
-    <div class="display-field">@(Model.Franchises == null ? "None" : Model.Franchises.Count.ToString())</div>
+    <label class="delete-labels pull-left"># of Franchises</label>
+    <label class="delete-labels offset2">@Model.Franchises.Count()</label>
+
+    <label class="delete-labels pull-left"># of Users</label>
+    <label class="delete-labels offset2">@Model.Users.Count()</label>
+
+    <label class="delete-labels pull-left"># of Active Features</label>
+    <label class="delete-labels offset2">@Model.Features.Count()</label>  
+
+    
+    
 </fieldset>
+
+<br /><br />
+<h3>Deleting all of this data is irreversible.  Choose wisely Grasshopper.</h3>
+
+
+</div>
 @using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <div>
+        <a href="/FranchiseSet" class="btn btn-large">Cancel & Get me outta here!</a>
+        <button type="submit" class="btn btn-large btn-danger" >
+            <i class="icon-trash icon-white"></i>
+            Delete @Model.FranchiseSetName
+        </button>
+    </div>
 }
 
 

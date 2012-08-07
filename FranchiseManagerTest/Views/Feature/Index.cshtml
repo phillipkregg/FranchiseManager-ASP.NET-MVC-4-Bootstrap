@@ -4,38 +4,71 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
+<div class="pull-left">
+    <h2>Welcome to the Features page Admin!</h2>
+</div>
+
+
+<div class="pull-right">
+    <p>
+        <a href="/Feature/Create" class="btn btn-large btn-primary">
+            <i class="icon-plus icon-white"></i>               
+            Create New Feature
+        </a>    
+    </p>
+</div>
+
+
+
+
+<br /><br />
+
+
+<table class="table">
+    <tr>        
+        <th>
+            Feature Name
+        </th>
+        <th>
+            Franchise Sets Assigned To
+        </th>
         <th></th>
-        <th>
-            FeatureName
-        </th>
-        <th>
-            FranchiseSets
-        </th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FeatureID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FeatureID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FeatureID })
-        </td>
+    <tr>        
         <td>
 			@item.FeatureName
         </td>
         <td>
 			@(item.FranchiseSets == null ? "None" : item.FranchiseSets.Count.ToString())
         </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.FeatureID }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Details", "Details", new { id = item.FeatureID }, new { @class = "btn" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.FeatureID }, new { @class = "btn btn-danger" })
+        </td>
     </tr>
 }
 
 </table>
+@{
+    FranchiseManagerTest.Models.FranchiseManagerContext context = new FranchiseManagerTest.Models.FranchiseManagerContext();
+	
+    var features = context.Features;
+    
+    if (!features.Any())
+	{ 
+			<div class="well">
+				<h3>There are no features.  Would you like to add one?</h3>
+				<a class="btn btn-large btn-primary pull-left" href="/Feature/Create" >
+					<i class="icon-plus icon-white"></i>
+					Yes!  I'd like to create my first feature!
+				</a><br /><br />
+			</div>
+	}                
+					
+}
 
 

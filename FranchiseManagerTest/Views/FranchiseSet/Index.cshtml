@@ -41,6 +41,12 @@
 			<th data_field="franchises">
 				Franchises
 			</th>
+            <th data_field="users">
+				Users
+			</th>
+            <th data_field="features">
+				Active Features
+			</th>
 			<th data-sortable="false">Actions</th>
 		</tr>
 	</thead>
@@ -59,6 +65,12 @@
 				</td>
 				<td>
 					@(item.Franchises == null ? "None" : item.Franchises.Count.ToString())
+				</td>
+                <td>
+					@(item.Franchises == null ? "None" : item.Users.Count.ToString())
+				</td>
+                <td>
+					@(item.Franchises == null ? "None" : item.Features.Count.ToString())
 				</td>
 				<td>
 					<div class="pull-left">

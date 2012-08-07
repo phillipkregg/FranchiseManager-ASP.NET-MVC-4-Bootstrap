@@ -185,6 +185,7 @@
 			@***** FEATURES AREA *****@
 			<div class="tab-pane" id="features">	
 				<div class="well">
+				<h3>Available Features</h3>  
 					<table class="table">
 						<tr>
 							@{
@@ -215,6 +216,27 @@
 								@: </tr>
 							}
 					</table>
+
+
+                    @{
+                        FranchiseManagerTest.Models.FranchiseManagerContext context = new FranchiseManagerTest.Models.FranchiseManagerContext();
+	
+                        var allFeatures = context.Features;
+    
+                        if (!allFeatures.Any())
+	                    { 
+			                    <div class="well">
+				                    <h3>There are no features.  Would you like to add one?</h3>
+				                    <a class="btn btn-large btn-primary pull-left" href="/Feature/Create" >
+					                    <i class="icon-plus icon-white"></i>
+					                    Yes!  I'd like to create my first feature!
+				                    </a><br /><br />
+			                    </div>
+	                    }                
+					
+                    }
+
+
 				</div>
 			</div>
 
@@ -224,21 +246,20 @@
 
 		@* FORM SAVE BUTTON *@
 		<p>
-			<input class="btn btn-large btn-primary" type="submit" value="Save Changes" />
+            <button type="submit" class="btn btn-large btn-primary" >
+				<i class="icon-check icon-white"></i>
+				Save Changes to @Model.FranchiseSetName
+			</button>
+
+          
 		</p>
 	
-
-
-
-
-        
- 
 
 	 </fieldset>
 	}
 
 
-    @**********  MODAL WINDOWS *********@
+	@**********  MODAL WINDOWS *********@
 
 		<div class="modal hide fade in" id="FranchiseModal" )>
 		  <div class="modal-header">
@@ -246,12 +267,12 @@
 			<h3>Create New Franchise</h3>
 		  </div>
 		  @using (Html.BeginForm("Create", "Franchise", FormMethod.Post))
-	       {
-			     <div id="create_franchise_modal_body" class="modal-body">
-			       @{ Html.RenderAction("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
-			     </div>
+		   {
+				 <div id="create_franchise_modal_body" class="modal-body">
+				   @{ Html.RenderAction("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
+				 </div>
 		 
-	       }
+		   }
 		</div>
 
 
