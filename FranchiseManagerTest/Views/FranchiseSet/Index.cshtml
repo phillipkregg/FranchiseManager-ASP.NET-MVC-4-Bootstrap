@@ -9,14 +9,14 @@
 	<h2 class="pull-left">Franchise Sets</h2>
 
 	<p class="pull-right">
-        <a class="btn btn-large btn-primary" href="@Url.Action("Create")">
-            <i class='icon-plus icon-white'></i>
-            New Franchise Set
-        </a>		
+		<a class="btn btn-large btn-primary" href="@Url.Action("Create")">
+			<i class='icon-plus icon-white'></i>
+			New Franchise Set
+		</a>		
 	</p>
 
    
-    
+	
 
 
 </div>
@@ -61,18 +61,18 @@
 					@(item.Franchises == null ? "None" : item.Franchises.Count.ToString())
 				</td>
 				<td>
-                    <div class="pull-left">
-                        <a class="btn" href="@Url.Action("Edit", new { id = item.FranchiseSetID })">
-                            <i class='icon-edit'></i>
-                            Edit
-                        </a>					   				
-					    <a id="get_detail" data-id="@Html.Raw(item.FranchiseSetID)" href="#" ></a> @* A hidden link to pass data-id *@
-					    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.FranchiseSetID })">
-                            <i class='icon-trash icon-white'></i>
-                            Delete
-                        </a>                       
-				    </div>
-                </td>
+					<div class="pull-left">
+						@*<a class="btn" href="@Url.Action("Edit", new { id = item.FranchiseSetID })">
+							<i class='icon-edit'></i>
+							Edit
+						</a>		*@			   				
+						<a id="get_detail" data-id="@Html.Raw(item.FranchiseSetID)" href="#" ></a> @* A hidden link to pass data-id *@
+						<a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.FranchiseSetID })">
+							<i class='icon-trash icon-white'></i>
+							Delete
+						</a>                       
+					</div>
+				</td>
 			</tr>
 		}
 	</tbody>
@@ -87,7 +87,7 @@
 	
 
 	<div class="set_details_container well">
-        <img src="~/Content/img/green_arrow_up.png" />
+		<img src="~/Content/img/green_arrow_up.png" />
 		<h2>Please Select a Franchise Set to Edit</h2>
 	</div>
 </div>
@@ -202,7 +202,7 @@
 
 			$.ajax({
 				type: "GET",                
-				url: "/franchiseset/Details/" + set_id,                
+				url: "/franchiseset/Edit/" + set_id,                
 				success: function (result) {
 					//alert("success");
 					console.log(result);
@@ -217,16 +217,7 @@
 		   
 		}
 
-//    $(function () {
-//        $('.edit-franchise-link').click(function (e) {
-//            $('#franchiseEditContent').load($(this).attr('href'), function() {
-//                // show your modal dialog here using whatever method you use..
-//                $("#FranchiseEditModal").modal();
-//            });
-//            e.preventDefault();
-//            return false;
-//        });
-//    });
+
 
 
 

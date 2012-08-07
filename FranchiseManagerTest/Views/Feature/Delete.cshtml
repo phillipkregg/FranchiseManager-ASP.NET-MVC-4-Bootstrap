@@ -13,11 +13,8 @@
     <div class="display-label">FeatureName</div>
     <div class="display-field">@Model.FeatureName</div>
 
-    <div class="display-label">IsChecked</div>
-    <div class="display-field">@Model.IsChecked</div>
-
-    <div class="display-label">FranchiseSet</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.FranchiseSet).ToString()</div>
+    <div class="display-label">FranchiseSets</div>
+    <div class="display-field">@(Model.FranchiseSets == null ? "None" : Model.FranchiseSets.Count.ToString())</div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>

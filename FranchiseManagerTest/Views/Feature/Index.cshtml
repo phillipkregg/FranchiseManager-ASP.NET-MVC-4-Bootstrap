@@ -16,10 +16,7 @@
             FeatureName
         </th>
         <th>
-            IsChecked
-        </th>
-        <th>
-            FranchiseSet
+            FranchiseSets
         </th>
     </tr>
 
@@ -34,10 +31,7 @@
 			@item.FeatureName
         </td>
         <td>
-			@item.IsChecked
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.FranchiseSet).ToString()
+			@(item.FranchiseSets == null ? "None" : item.FranchiseSets.Count.ToString())
         </td>
     </tr>
 }

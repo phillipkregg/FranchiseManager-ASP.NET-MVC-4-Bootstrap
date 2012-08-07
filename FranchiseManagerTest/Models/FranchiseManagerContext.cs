@@ -18,6 +18,15 @@ namespace FranchiseManagerTest.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Feature> Features { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Feature>()
+                .HasMany(f => f.FranchiseSets).WithMany(f => f.Features)
+                .Map(t => t.MapLeftKey("FeatureID")
+                    .MapRightKey("FranchiseSetID")
+                    .ToTable("FranchiseSetFeatures"));
+        }
+
 
     }
 }

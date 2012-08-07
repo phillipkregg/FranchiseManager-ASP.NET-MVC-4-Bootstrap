@@ -9,17 +9,15 @@ namespace FranchiseManagerTest.Controllers
 {   
     public class FeatureController : Controller
     {
-		private readonly IFranchiseSetRepository franchisesetRepository;
 		private readonly IFeatureRepository featureRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
-        public FeatureController() : this(new FranchiseSetRepository(), new FeatureRepository())
+        public FeatureController() : this(new FeatureRepository())
         {
         }
 
-        public FeatureController(IFranchiseSetRepository franchisesetRepository, IFeatureRepository featureRepository)
+        public FeatureController(IFeatureRepository featureRepository)
         {
-			this.franchisesetRepository = franchisesetRepository;
 			this.featureRepository = featureRepository;
         }
 
@@ -28,7 +26,7 @@ namespace FranchiseManagerTest.Controllers
 
         public ViewResult Index()
         {
-            return View(featureRepository.AllIncluding(feature => feature.FranchiseSet));
+            return View(featureRepository.AllIncluding(feature => feature.FranchiseSets));
         }
 
         //
@@ -44,7 +42,6 @@ namespace FranchiseManagerTest.Controllers
 
         public ActionResult Create()
         {
-			ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
             return View();
         } 
 
@@ -59,7 +56,6 @@ namespace FranchiseManagerTest.Controllers
                 featureRepository.Save();
                 return RedirectToAction("Index");
             } else {
-				ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
 				return View();
 			}
         }
@@ -69,7 +65,6 @@ namespace FranchiseManagerTest.Controllers
  
         public ActionResult Edit(int id)
         {
-			ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
              return View(featureRepository.Find(id));
         }
 
@@ -84,7 +79,6 @@ namespace FranchiseManagerTest.Controllers
                 featureRepository.Save();
                 return RedirectToAction("Index");
             } else {
-				ViewBag.PossibleFranchiseSets = franchisesetRepository.All;
 				return View();
 			}
         }
@@ -112,7 +106,6 @@ namespace FranchiseManagerTest.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                franchisesetRepository.Dispose();
                 featureRepository.Dispose();
             }
             base.Dispose(disposing);

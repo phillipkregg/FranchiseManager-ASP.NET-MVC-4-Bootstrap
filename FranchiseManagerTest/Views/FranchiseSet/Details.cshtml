@@ -1,373 +1,373 @@
 @model FranchiseManagerTest.Models.FranchiseSet
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 
-       
+	   
 }
 
 <h2>@Model.FranchiseSetName Details</h2>
 
 <fieldset> 
 
-    <ul class="nav nav-pills">
-      <li class="active"><a href="#details" data-toggle="tab">Franchise Set Details</a></li>
-      <li><a href="#franchises" data-toggle="tab">Franchise List</a></li>
-      <li><a href="#users" data-toggle="tab">Users</a></li>
-      <li><a href="#features" data-toggle="tab">Features</a></li>
-    </ul>
-    
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="#details" data-toggle="tab">Franchise Set Details</a></li>
+	  <li><a href="#franchises" data-toggle="tab">Franchise List</a></li>
+	  <li><a href="#users" data-toggle="tab">Users</a></li>
+	  <li><a href="#features" data-toggle="tab">Features</a></li>
+	</ul>
+	
 
-    <div class="tab-content">
-        
-        <div class="tab-pane active" id="details">
-            <div class="row">
-                <div class="span2 pull-left ">Franchise Set Name:</div>
-                <div>@Model.FranchiseSetName</div>
-            </div>
+	<div class="tab-content">
+		
+		<div class="tab-pane active" id="details">
+			<div class="row">
+				<div class="span2 pull-left ">Franchise Set Name:</div>
+				<div>@Model.FranchiseSetName</div>
+			</div>
 
-            <div class="row">
-                <div class="span2 pull-left">Main Address:</div>
-                <div>@Model.MainAddress</div>
-            </div>
+			<div class="row">
+				<div class="span2 pull-left">Main Address:</div>
+				<div>@Model.MainAddress</div>
+			</div>
 
-            <div class="row">
-                <div class="span2 pull-left">Time Zone</div>
-                <div>@Model.TimeZone</div>
-            </div>
+			<div class="row">
+				<div class="span2 pull-left">Time Zone</div>
+				<div>@Model.TimeZone</div>
+			</div>
 
-             <div class="row">
-                <div class="span2 pull-left">Franchises</div>
-                <div>@(Model.Franchises == null ? "None" : Model.Franchises.Count.ToString())</div>
-            </div>
-
-
-        </div>
-
-        <div class="tab-pane" id="franchises">
-            
-            <h3 class="pull-left">Franchise List</h3>
-
-            <a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#FranchiseModal" >
-                <i class="icon-plus icon-white"></i>
-                Add New Franchise
-            </a>
-
-            @*<a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
-                <i class='icon-plus icon-white'></i>
-                New Franchise
-            </a>	*@
-    
-            <br /><br /><br />
+			 <div class="row">
+				<div class="span2 pull-left">Franchises</div>
+				<div>@(Model.Franchises == null ? "None" : Model.Franchises.Count.ToString())</div>
+			</div>
 
 
-            <div class="well">
-        
-                <h3>Franchises</h3>
+		</div>
 
-                <table class="table">
-                    <tr>
-                        <th>Franchise Name</th>
-                        <th>Franchise Number</th>
-                        <th>Actions</th>
-                    </tr>
-                    
-                   
+		<div class="tab-pane" id="franchises">
+			
+			<h3 class="pull-left">Franchise List</h3>
 
-                    @foreach (var item in Model.Franchises)
-                    {
-                                    
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FranchiseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FranchiseNumber)
-                            </td>
-                            <td>
-                                @*<a class="btn" href="@Url.Action("Edit", "Franchise", new { id = item.FranchiseID })">
-                                 <i class="icon-edit"></i>
-                                    Edit
-                                </a>*@
-                                <a class="btn edit-franchise-link" data-toggle="modal" href="/Franchise/Edit/@item.FranchiseID" >
-                                    <i class="icon-edit"></i>
-                                    Edit       
-                                </a>
+			<a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#FranchiseModal" >
+				<i class="icon-plus icon-white"></i>
+				Add New Franchise
+			</a>
 
-                                 <a class="btn delete-franchise-link" data-toggle="modal" href="/Franchise/Delete/@item.FranchiseID" >
-                                    <i class="icon-trash"></i>
-                                    Delete       
-                                </a>
-                                
-                                @*<a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseID })">
-                                    <i class="icon-trash icon-white"></i>
-                                    Delete
-                                </a>*@
-                            </td>
-                        </tr>
-                        
-                        
-                        
-                        
-                    }
-                </table>
-                @{
-                    if (Model.Franchises.Count == 0)
-                    { 
-                            <div class="well">
-                                <h3>There are no franchises.  Would you like to add one?</h3>
-                                <a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#FranchiseModal" >
-                                    <i class="icon-plus icon-white"></i>
-                                    Yes!  I'd like to add a new Franchise to @Model.FranchiseSetName.
-                                </a><br /><br />
-                            </div>
-                    }                
-                    
-                }
-
-            </div>
-
-        </div>
+			@*<a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
+				<i class='icon-plus icon-white'></i>
+				New Franchise
+			</a>	*@
+	
+			<br /><br /><br />
 
 
+			<div class="well">
+		
+				<h3>Franchises</h3>
 
-        <div class="tab-pane" id="users">
-            <h3 class="pull-left">Users</h3>
+				<table class="table">
+					<tr>
+						<th>Franchise Name</th>
+						<th>Franchise Number</th>
+						<th>Actions</th>
+					</tr>
+					
+				   
 
-            <a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#UserModal" >
-                <i class="icon-plus icon-white"></i>
-                Add New User
-            </a>
+					@foreach (var item in Model.Franchises)
+					{
+									
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.FranchiseName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.FranchiseNumber)
+							</td>
+							<td>
+								@*<a class="btn" href="@Url.Action("Edit", "Franchise", new { id = item.FranchiseID })">
+								 <i class="icon-edit"></i>
+									Edit
+								</a>*@
+								<a class="btn edit-franchise-link" data-toggle="modal" href="/Franchise/Edit/@item.FranchiseID" >
+									<i class="icon-edit"></i>
+									Edit       
+								</a>
 
-            @*<a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
-                <i class='icon-plus icon-white'></i>
-                New Franchise
-            </a>	*@
-    
-            <br /><br /><br />
+								 <a class="btn delete-franchise-link" data-toggle="modal" href="/Franchise/Delete/@item.FranchiseID" >
+									<i class="icon-trash"></i>
+									Delete       
+								</a>
+								
+								@*<a class="btn btn-danger" href="@Url.Action("Delete", "Franchise", new { id = item.FranchiseID })">
+									<i class="icon-trash icon-white"></i>
+									Delete
+								</a>*@
+							</td>
+						</tr>
+						
+						
+						
+						
+					}
+				</table>
+				@{
+					if (Model.Franchises.Count == 0)
+					{ 
+							<div class="well">
+								<h3>There are no franchises.  Would you like to add one?</h3>
+								<a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#FranchiseModal" >
+									<i class="icon-plus icon-white"></i>
+									Yes!  I'd like to add a new Franchise to @Model.FranchiseSetName.
+								</a><br /><br />
+							</div>
+					}                
+					
+				}
 
+			</div>
 
-            <div class="well">
-        
-                <h3>User List</h3>               
-
-                <table class="table">
-                    <tr>
-                        <th>User Name</th>
-                        <th>User Number</th>
-                        <th>Actions</th>
-                    </tr>
-                    @foreach (var user in Model.Users)
-                    {
-                                          
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => user.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => user.UserNumber)
-                            </td>
-                            <td>
-                                <a class="btn edit-user-link" data-toggle="modal" href="/User/Edit/@user.UserID" >
-                                    <i class="icon-edit"></i>
-                                    Edit       
-                                </a>
-                                <a class="btn delete-user-link" data-toggle="modal" href="/User/Delete/@user.UserID" >
-                                    <i class="icon-edit"></i>
-                                    Delete       
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </table>
-
-
-                @{
-                    if (Model.Users.Count == 0)
-                    { 
-                            <div class="well">
-                                <h3>There are no users.  Would you like to add one?</h3>
-                                <a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#UserModal" >
-                                    <i class="icon-plus icon-white"></i>
-                                    Yes!  I'd like to add a new User to @Model.FranchiseSetName.
-                                </a><br /><br />
-                            </div>
-                    }                
-                    
-                }
-
-            </div>
-        </div>
-
-        <div class="tab-pane" id="features">
-            
-
-            <div class="well">
-
-            <table class="table">
-                <tr>                    
-                    <th>
-                        Feature Name
-                    </th>
-                    <th>
-                        Activated?
-                    </th>
-                    
-                </tr>
-
-            @foreach (var item in ViewBag.PossibleFeatures) {
-                <tr>                    
-                    <td>
-			            @item.FeatureName
-                    </td>
-                    <td>
-                        
-			            @item.IsChecked
-                    </td>
-                   
-                </tr>
-            }
-
-            </table>
-
-            </div>
+		</div>
 
 
 
-        </div>
+		<div class="tab-pane" id="users">
+			<h3 class="pull-left">Users</h3>
 
-    </div> @*End tab-content div*@
+			<a class="btn btn-large btn-primary pull-right" data-toggle="modal" href="#UserModal" >
+				<i class="icon-plus icon-white"></i>
+				Add New User
+			</a>
 
-
-
-
-
-    <div class="modal hide fade in" id="FranchiseModal" )>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Create New Franchise</h3>
-      </div>
-      @using (Html.BeginForm("Create", "Franchise", FormMethod.Post))
-      {
-         <div id="create_franchise_modal_body" class="modal-body">
-           @{ Html.RenderAction("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
-         </div>
-         
-      }
-    </div>
+			@*<a class="btn btn-large btn-primary pull-right" href="@Url.Action("Create", "Franchise", new { Model.FranchiseSetID } )">
+				<i class='icon-plus icon-white'></i>
+				New Franchise
+			</a>	*@
+	
+			<br /><br /><br />
 
 
-    <div class="modal hide fade in" id="FranchiseEditModal" )>
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Edit Franchise</h3>
-        </div>
-        <div id="franchiseEditContent" class="modal-body"></div>
-    </div>
+			<div class="well">
+		
+				<h3>User List</h3>               
+
+				<table class="table">
+					<tr>
+						<th>User Name</th>
+						<th>User Number</th>
+						<th>Actions</th>
+					</tr>
+					@foreach (var user in Model.Users)
+					{
+										  
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => user.UserName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => user.UserNumber)
+							</td>
+							<td>
+								<a class="btn edit-user-link" data-toggle="modal" href="/User/Edit/@user.UserID" >
+									<i class="icon-edit"></i>
+									Edit       
+								</a>
+								<a class="btn delete-user-link" data-toggle="modal" href="/User/Delete/@user.UserID" >
+									<i class="icon-edit"></i>
+									Delete       
+								</a>
+							</td>
+						</tr>
+					}
+				</table>
+
+
+				@{
+					if (Model.Users.Count == 0)
+					{ 
+							<div class="well">
+								<h3>There are no users.  Would you like to add one?</h3>
+								<a class="btn btn-large btn-primary pull-left" data-toggle="modal" href="#UserModal" >
+									<i class="icon-plus icon-white"></i>
+									Yes!  I'd like to add a new User to @Model.FranchiseSetName.
+								</a><br /><br />
+							</div>
+					}                
+					
+				}
+
+			</div>
+		</div>
+
+		<div class="tab-pane" id="features">
+			
+
+			<div class="well">
+
+			<table class="table">
+				<tr>                    
+					<th>
+						Feature Name
+					</th>
+					<th>
+						Activated?
+					</th>
+					
+				</tr>
+
+			@foreach (var item in ViewBag.PossibleFeatures) {
+				<tr>                    
+					<td>
+						@item.FeatureName
+					</td>
+					<td>
+						
+						@item.IsChecked
+					</td>
+				   
+				</tr>
+			}
+
+			</table>
+
+			</div>
+
+
+
+		</div>
+
+	</div> @*End tab-content div*@
+
+
+
+
+
+	<div class="modal hide fade in" id="FranchiseModal" )>
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Create New Franchise</h3>
+	  </div>
+	  @using (Html.BeginForm("Create", "Franchise", FormMethod.Post))
+	  {
+		 <div id="create_franchise_modal_body" class="modal-body">
+		   @{ Html.RenderAction("Create", "Franchise", new { FranchiseSetId = Model.FranchiseSetID }); }
+		 </div>
+		 
+	  }
+	</div>
+
+
+	<div class="modal hide fade in" id="FranchiseEditModal" )>
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Edit Franchise</h3>
+		</div>
+		<div id="franchiseEditContent" class="modal-body"></div>
+	</div>
 
    
 
 
-    <div class="modal hide fade in" id="FranchiseDeleteModal" )>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Delete Franchise</h3>
-      </div>
-      <div id="franchiseDeleteContent" class="modal-body"></div>
-    </div>
+	<div class="modal hide fade in" id="FranchiseDeleteModal" )>
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Delete Franchise</h3>
+	  </div>
+	  <div id="franchiseDeleteContent" class="modal-body"></div>
+	</div>
 
-    
-
-
+	
 
 
-    <div class="modal hide fade in" id="UserModal" )>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Create New User</h3>
-      </div>
-      @using (Html.BeginForm("Create", "User", FormMethod.Post))
-      {
-         <div class="modal-body">
-           @{ Html.RenderAction("Create", "User", new { FranchiseSetId = Model.FranchiseSetID }); }
-         </div>
-         
-      }
-    </div>
 
 
-    <div class="modal hide fade in" id="UserEditModal" )>
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Edit User</h3>
-        </div>
-        <div id="userEditContent" class="modal-body"></div>
-    </div>
+	<div class="modal hide fade in" id="UserModal" )>
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Create New User</h3>
+	  </div>
+	  @using (Html.BeginForm("Create", "User", FormMethod.Post))
+	  {
+		 <div class="modal-body">
+		   @{ Html.RenderAction("Create", "User", new { FranchiseSetId = Model.FranchiseSetID }); }
+		 </div>
+		 
+	  }
+	</div>
 
 
-    <div class="modal hide fade in" id="UserDeleteModal" )>
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Delete User</h3>
-        </div>
-        <div id="userDeleteContent" class="modal-body"></div>
-    </div>
+	<div class="modal hide fade in" id="UserEditModal" )>
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Edit User</h3>
+		</div>
+		<div id="userEditContent" class="modal-body"></div>
+	</div>
+
+
+	<div class="modal hide fade in" id="UserDeleteModal" )>
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>Delete User</h3>
+		</div>
+		<div id="userDeleteContent" class="modal-body"></div>
+	</div>
  
 
 </fieldset>
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.FranchiseSetID }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id=Model.FranchiseSetID }) |
+	@Html.ActionLink("Back to List", "Index")
 </p>*@
 
 
  <script type="text/javascript">
 
-     $(function () {
-         $('.edit-franchise-link').click(function (e) {
-             $('#franchiseEditContent').load($(this).attr('href'), function () {
-                 // show your modal dialog here 
-                 $("#FranchiseEditModal").modal();
-             });
-             e.preventDefault();
-             return false;
-         });
+	 $(function () {
+		 $('.edit-franchise-link').click(function (e) {
+			 $('#franchiseEditContent').load($(this).attr('href'), function () {
+				 // show your modal dialog here 
+				 $("#FranchiseEditModal").modal();
+			 });
+			 e.preventDefault();
+			 return false;
+		 });
 
 
 
-         $('.delete-franchise-link').click(function (e) {             
+		 $('.delete-franchise-link').click(function (e) {             
 
-             $('#franchiseDeleteContent').load($(this).attr('href'), function () {
-                 // show your modal dialog here 
-                 $("#FranchiseDeleteModal").modal();
-             });
-             e.preventDefault();
-             return false;
-         });
-
-
-         $('.edit-user-link').click(function (e) {
-
-             $('#userEditContent').load($(this).attr('href'), function () {
-                 // show your modal dialog here 
-                 $("#UserEditModal").modal();
-             });
-             e.preventDefault();
-             return false;
-         });
+			 $('#franchiseDeleteContent').load($(this).attr('href'), function () {
+				 // show your modal dialog here 
+				 $("#FranchiseDeleteModal").modal();
+			 });
+			 e.preventDefault();
+			 return false;
+		 });
 
 
-         $('.delete-user-link').click(function (e) {
+		 $('.edit-user-link').click(function (e) {
 
-             $('#userDeleteContent').load($(this).attr('href'), function () {
-                 // show your modal dialog here 
-                 $("#UserDeleteModal").modal();
-             });
-             e.preventDefault();
-             return false;
-         });
+			 $('#userEditContent').load($(this).attr('href'), function () {
+				 // show your modal dialog here 
+				 $("#UserEditModal").modal();
+			 });
+			 e.preventDefault();
+			 return false;
+		 });
 
 
-     });
-    
-    </script>
+		 $('.delete-user-link').click(function (e) {
+
+			 $('#userDeleteContent').load($(this).attr('href'), function () {
+				 // show your modal dialog here 
+				 $("#UserDeleteModal").modal();
+			 });
+			 e.preventDefault();
+			 return false;
+		 });
+
+
+	 });
+	
+	</script>

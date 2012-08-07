@@ -10,22 +10,3 @@
     @Html.ValidationMessageFor(model => model.FeatureName)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.IsChecked)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.IsChecked)
-    @Html.ValidationMessageFor(model => model.IsChecked)
-</div>
-
-<div class="editor-label">
-    FranchiseSet
-</div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.FranchiseSetId, ((IEnumerable<FranchiseManagerTest.Models.FranchiseSet>)ViewBag.PossibleFranchiseSets).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
-        Value = option.FranchiseSetID.ToString(),
-        Selected = (Model != null) && (option.FranchiseSetID == Model.FranchiseSetId)
-    }), "Choose...")
-    @Html.ValidationMessageFor(model => model.FranchiseSetId)
-</div>

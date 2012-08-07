@@ -109,3 +109,63 @@ li
 }
 
 
+
+//***** CUSTOM CHECKBOXES *****
+.input-switch + label {
+		position: relative;	
+		margin-left: 10px;	
+		display: inline-block;
+		height: 25px; width: 75px;
+		border: 1px solid #000;
+		border-radius: 5px;
+		background-color: #666;
+		line-height: 25px;
+		text-align: left;
+		-webkit-transition: background-color 0.5s;
+	}
+	.input-switch {
+		display: none;		
+	}
+	.input-switch + label span.grip {
+		position: absolute;
+		top: 0px; left: 0px;
+		display: inline-block;
+		width: 15px; height: 25px;
+		background-color: #EEE;
+		border-radius: 5px;
+		-webkit-transition: left 0.5s;    
+	}
+	.input-switch + label span.switch-label {
+		position: absolute;
+		display: inline-block;
+		top: 0px; left: 17px;
+		width: 56px;
+		overflow: hidden;
+		text-align: center;
+		-webkit-transition: opacity 0.5s;    
+	}
+	.input-switch + label span.switch-label.on {
+		left: 2px;
+		opacity: 0;
+	}
+	.input-switch:checked + label {
+		background-color: #39F;
+	}
+	.input-switch:checked + label span.grip {
+		left: 60px;
+	}
+	.input-switch:checked + label span.switch-label {
+		opacity: 0;
+	}
+	.input-switch:checked + label span.switch-label.on {
+		opacity: 1;
+	}
+
+	.check-feature-label{		
+		font-size: 18px;
+		position: absolute;
+		margin-top: 5px;
+		margin-left: 10px;
+		
+		
+	}
