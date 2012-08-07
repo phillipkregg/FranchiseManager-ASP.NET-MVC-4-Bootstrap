@@ -40,10 +40,20 @@
 @using (Html.BeginForm()) {
     <div>
         <a href="/FranchiseSet" class="btn btn-large">Cancel & Get me outta here!</a>
-        <button type="submit" class="btn btn-large btn-danger" >
+
+         <button type="submit" class="btn btn-large btn-danger" >
             <i class="icon-trash icon-white"></i>
             Delete @Model.FranchiseSetName
         </button>
+
+        <br /><br />
+        <div class="pull-left">
+            <img src="../../Content/img/gray_arrow_small2.png" />
+            <p class="cursive-font">My humble reccommendation.</p>
+        </div>
+       
+
+       
     </div>
 }
 
