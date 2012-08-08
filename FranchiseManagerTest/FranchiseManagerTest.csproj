@@ -558,6 +558,10 @@
     <Content Include="Content\2012.2.607\Windows7\sprite.png" />
     <Content Include="Content\img\gray_arrow_small.png" />
     <Content Include="Content\img\gray_arrow_small2.png" />
+    <Content Include="Content\img\gray_background_2.png" />
+    <Content Include="Content\img\gray_gradient_bg_1.png" />
+    <Content Include="Content\img\green_background.png" />
+    <Content Include="Content\img\orange_background.png" />
     <Content Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <Content Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <Content Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

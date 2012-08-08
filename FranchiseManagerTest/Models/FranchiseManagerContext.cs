@@ -9,7 +9,8 @@ namespace FranchiseManagerTest.Models
     public class FranchiseManagerContext : DbContext
     {
         // This constructor specifies the connection string name - needed for AppHarbor deploy
-        public FranchiseManagerContext() : base("DefaultConnection")
+        public FranchiseManagerContext()
+            : base("DefaultConnection")
         {
 
         }
